@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Nest Realty | Where Dreams Find a Home</title>
+
+    <link rel="icon" type="image/png" href="https://i.ibb.co/rG1YV5hD/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#162b35',      
+                            bgLight: '#1d3540', 
+                            bgWhite: '#f8f9fa', 
+                            gold: '#d1a654',    
+                            goldDark: '#b89045',
+                            paleGold: '#bba77b' 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #162b35; }
+        ::-webkit-scrollbar-thumb { background: #d1a654; border-radius: 4px; }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(209, 166, 84, 0.3);
+            border-radius: 50%;
+            border-top-color: #d1a654;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(23, 44, 54, 0.95) 0%, rgba(23, 44, 54, 0.8) 40%, rgba(23, 44, 54, 0.2) 100%), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .map-bg {
+            background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-brand-bgWhite dark:bg-brand-bg dark:text-gray-200 transition-colors duration-300">
+
+    <div id="loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-brand-bg text-brand-gold transition-opacity duration-500">
+        <div class="spinner mb-4"></div>
+        <h1 class="font-serif text-2xl tracking-wider">Dream Nest Realty</h1>
+    </div>
+
+    <div id="app" class="hidden min-h-screen flex-col opacity-0 transition-opacity duration-500">
+
+        <nav id="main-nav" class="fixed w-full z-50 transition-all duration-300 bg-[#1E3946] shadow-md border-b border-white/5 h-16 flex items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="flex justify-between items-center h-full">
+                    
+                    <div class="flex items-center cursor-pointer group" onclick="switchPage('home')">
+                        <img src="logomax.png" alt="Logo Icon" class="w-11 h-11 rounded-full object-cover mr-3 group-hover:scale-105 transition-transform shadow-[0_0_10px_rgba(236,208,126,0.15)]">
+                        <div class="flex flex-col justify-center">
+                            <h1 class="font-serif font-bold text-xl text-[#e4c478] leading-none tracking-wide group-hover:text-[#fce490] transition-colors">Dream Nest</h1>
+                            <p class="text-[9px] tracking-[0.2em] text-[#a19572] mt-0.5 uppercase font-medium">Realty</p>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:flex space-x-6 items-center">
+                        <button onclick="switchPage('home')" class="nav-btn text-xs font-bold text-[#DDAF3C] hover:text-[#fce490] transition-colors tracking-wider uppercase" data-target="home">HOME</button>
+                        <button onclick="switchPage('explore')" class="nav-btn text-xs font-semibold text-[#a19572] hover:text-[#e4c478] transition-colors tracking-wider uppercase" data-target="explore">PROPERTIES</button>
+                        <button onclick="switchPage('buy')" class="nav-btn text-xs font-semibold text-[#a19572] hover:text-[#e4c478] transition-colors tracking-wider uppercase" data-target="buy">BUY</button>
+                        <button onclick="switchPage('rent')" class="nav-btn text-xs font-semibold text-[#a19572] hover:text-[#e4c478] transition-colors tracking-wider uppercase" data-target="rent">RENT</button>
+<button onclick="switchPage('sell')" class="nav-btn text-xs font-semibold text-[#a19572] hover:text-[#e4c478] transition-colors tracking-wider uppercase" data-target="sell">SELL</button>
+                    </div>
+
+                    <div class="hidden md:flex">
+    <a href="tel:+919811221604" class="bg-gradient-to-r from-[#b38633] from-[0%] to-[#ebc673] to-[100%] hover:from-[#a67b2d] hover:to-[#dbb55b] text-[#132026] font-bold py-2 px-5 rounded-full flex items-center gap-1.5 transition-all hover:scale-105 shadow-[0_4px_15px_rgba(228,196,120,0.25)] text-xs tracking-wide cursor-pointer">
+        <i class="ph ph-phone text-base font-bold"></i> Call Now
+    </a>
+</div>
+
+                    <div class="md:hidden flex items-center">
+                        <button class="text-[#e4c478] hover:text-[#fce490] focus:outline-none transition-colors">
+                            <i class="ph ph-list text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <button id="theme-toggle" class="fixed bottom-6 left-6 z-50 bg-white dark:bg-brand-bgLight text-slate-800 dark:text-white p-3 rounded-full shadow-lg border border-gray-100 dark:border-gray-700 hover:scale-110 transition-transform">
+            <i class="ph ph-moon text-xl dark:hidden"></i>
+            <i class="ph ph-sun text-xl hidden dark:block text-brand-gold"></i>
+        </button>
+
+        
+        <a href="https://wa.me/919811221604" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center cursor-pointer">
+    <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+</a>
+
+<main id="view-rent" class="view-section flex-grow pt-28 pb-20 hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="mb-12 border-b border-gray-200 dark:border-white/10 pb-8">
+                    <p class="text-brand-gold text-[11px] font-bold tracking-[0.25em] uppercase mb-3">Rent Property</p>
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-800 dark:text-white mb-4">Find Your <span class="text-brand-gold">Perfect Rental</span></h1>
+                    <p class="text-gray-500 dark:text-gray-400 max-w-2xl text-sm leading-relaxed">
+                        Explore premium rental properties in Dehradun's finest neighborhoods. Move-in ready homes and apartments.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left mb-12">
+                    
+                    <div class="property-card bg-white dark:bg-brand-bgLight rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-white/10 group cursor-pointer transition-all duration-300 hover:-translate-y-1 h-fit flex flex-col" data-price="120" data-area="5000" data-location="Sahaspur" data-type="plot" data-status="buy" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+                        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" data-images='["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600566753086-00f18efc204b?auto=format&fit=crop&w=800&q=80"]' data-index="0" alt="Villa" class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700" onclick="switchPage('detail')">
+                            
+                            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                                <span class="bg-gradient-to-r from-[#b38633] to-[#ebc673] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">VILLA</span>
+                                <span class="bg-[#132026]/80 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md tracking-wider uppercase">Rent</span>
+                            </div>
+
+                            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md"><i class="ph ph-heart text-sm"></i></button>
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md"><i class="ph ph-share-network text-sm"></i></button>
+                            </div>
+
+                            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20"><i class="ph ph-caret-left text-sm"></i></button>
+                            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20"><i class="ph ph-caret-right text-sm"></i></button>
+
+                            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                            </div>
+
+                            <div class="absolute bottom-3 right-3 bg-[#132026]/80 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1 rounded-lg text-xs shadow-md border border-white/10 z-10">₹85k/mo</div>
+                        </div>
+                        
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 dark:text-white group-hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Furnished Villa in Rajpur</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-[11px] flex items-center gap-1.5 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Rajpur Road, Dehradun</p>
+                            <div class="flex justify-between items-center text-[11px] text-gray-500 border-t border-gray-100 pt-3 mb-4">
+                                <span class="flex items-center gap-1"><i class="ph ph-bed text-base"></i> 4 Beds</span>
+                                <span class="flex items-center gap-1"><i class="ph ph-bathtub text-base"></i> 3 Baths</span>
+                                <span class="flex items-center gap-1"><i class="ph ph-corners-out text-base"></i> 3200 sq.ft</span>
+                            </div>
+                            
+                            <div class="mt-auto flex gap-2">
+                                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] transition-all shadow-md group">
+                                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                                </button>
+                                <button class="w-9 h-9 border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm"><i class="ph ph-calculator text-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-card bg-white dark:bg-brand-bgLight rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-white/10 group cursor-pointer transition-all duration-300 hover:-translate-y-1 h-fit flex flex-col" data-price="85" data-area="1650" data-location="Jakhan" data-type="flat" data-status="buy" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+                        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" data-images='["https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80"]' data-index="0" alt="Apartment" class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700" onclick="switchPage('detail')">
+                            
+                            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                                <span class="bg-gradient-to-r from-[#b38633] to-[#ebc673] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">FLAT</span>
+                                <span class="bg-[#132026]/80 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md tracking-wider uppercase">Rent</span>
+                            </div>
+
+                            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md"><i class="ph ph-heart text-sm"></i></button>
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md"><i class="ph ph-share-network text-sm"></i></button>
+                            </div>
+
+                            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20"><i class="ph ph-caret-left text-sm"></i></button>
+                            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20"><i class="ph ph-caret-right text-sm"></i></button>
+
+                            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                            </div>
+
+                            <div class="absolute bottom-3 right-3 bg-[#132026]/80 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1 rounded-lg text-xs shadow-md border border-white/10 z-10">₹35k/mo</div>
+                        </div>
+                        
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 dark:text-white group-hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Premium 3BHK Apartment</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-[11px] flex items-center gap-1.5 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Jakhan, Dehradun</p>
+                            <div class="flex justify-between items-center text-[11px] text-gray-500 border-t border-gray-100 pt-3 mb-4">
+                                <span class="flex items-center gap-1"><i class="ph ph-bed text-base"></i> 3 Beds</span>
+                                <span class="flex items-center gap-1"><i class="ph ph-bathtub text-base"></i> 2 Baths</span>
+                                <span class="flex items-center gap-1"><i class="ph ph-corners-out text-base"></i> 1650 sq.ft</span>
+                            </div>
+                            
+                            <div class="mt-auto flex gap-2">
+                                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] transition-all shadow-md group">
+                                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                                </button>
+                                <button class="w-9 h-9 border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm"><i class="ph ph-calculator text-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <main id="view-sell" class="view-section flex-grow pt-28 pb-20 hidden">
+            <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="mb-8 text-center md:text-left">
+                    <p class="text-brand-gold text-[11px] font-bold tracking-[0.25em] uppercase mb-3">Sell Property</p>
+                    <h1 class="text-4xl font-serif font-bold text-slate-800 dark:text-white mb-3">List Your <span class="text-brand-gold">Property</span></h1>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                        Fill in the details below and our team will review your listing. Approved properties will be published within 24 hours.
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-brand-bgLight rounded-2xl shadow-sm border border-gray-200 dark:border-white/10 p-6 md:p-8 mb-12">
+                    <form id="sell-form" action="https://api.web3forms.com/submit" method="POST">
+    
+    <input type="hidden" name="access_key" value="86795aad-af09-4129-8a86-f87e8aebf438">
+    <input type="hidden" name="subject" value="New Property Listing Submission">
+
+    <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-5">Property Details</h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Property Title</label>
+            <input type="text" name="property_title" placeholder="e.g. 3BHK Villa" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500" required>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Property Type</label>
+            <select name="property_type" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-gray-300 rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm cursor-pointer appearance-none" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="Villa">Villa</option>
+                <option value="Flat / Apartment">Flat / Apartment</option>
+                <option value="Plot">Plot</option>
+                <option value="Farmhouse">Farmhouse</option>
+            </select>
+        </div>
+        
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Location</label>
+            <input type="text" name="location" placeholder="e.g. Jakhan, Dehradun" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500" required>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Price (₹)</label>
+            <input type="text" name="price" placeholder="e.g. 8500000" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500" required>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Area (sq.ft)</label>
+            <input type="text" name="area" placeholder="e.g. 1650" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500" required>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Bedrooms</label>
+            <input type="number" name="bedrooms" placeholder="e.g. 3" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500">
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Description</label>
+        <textarea name="description" rows="3" placeholder="Describe your property..." class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500 resize-none" required></textarea>
+    </div>
+
+    <hr class="border-t border-gray-200 dark:border-white/10 mb-6">
+
+    <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-5">Contact Details</h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Your Name</label>
+            <input type="text" name="name" placeholder="Full name" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500" required>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Phone Number</label>
+            <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500" required>
+        </div>
+    </div>
+    
+    <div class="mb-8">
+        <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1.5">Email</label>
+        <input type="email" name="email" placeholder="your@email.com" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400 dark:placeholder-gray-500" required>
+    </div>
+
+    <button type="submit" id="sell-submit-btn" class="w-full bg-gradient-to-r from-[#b38633] to-[#ebc673] hover:from-[#a67b2d] hover:to-[#dbb55b] text-[#132026] font-bold py-3.5 rounded-lg transition-transform hover:-translate-y-0.5 shadow-md tracking-wide text-sm flex justify-center items-center">
+        Submit Property for Review
+    </button>
+    
+    <p id="sell-form-result" class="mt-4 text-center text-sm font-medium hidden"></p>
+</form>
+                </div>
+
+            </div>
+        </main>
+        <main id="view-home" class="view-section flex-grow pt-0 block">
+            
+            <section class="hero-bg min-h-[90vh] flex flex-col justify-center relative pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+        
+        <div class="w-full lg:w-3/5 pt-8 lg:pt-0">
+            <p class="text-[#e4c478] flex items-center gap-1.5 mb-4 text-[12px] tracking-[0.2em] font-semibold uppercase animate-fade-in-up">
+                <i class="ph ph-map-pin text-[15px]"></i> Dehradun, Uttarakhand
+            </p>
+            
+            <h1 class="text-5xl md:text-[62px] font-serif font-bold text-[#eecd75] mb-5 leading-[1.05] tracking-tight">
+                Where Dreams<br>Find a Home
+            </h1>
+            
+            <p class="text-[#a19572] max-w-[580px] text-[16px] md:text-[17px] mb-10 font-normal leading-relaxed">
+                Your trusted property partner in Dehradun. Discover premium plots, flats, villas, independent houses, and farmhouse plots.
+            </p>
+            
+            <div class="flex flex-wrap gap-3.5 mb-8 items-center">
+                <button onclick="switchPage('explore')" class="bg-gradient-to-r from-[#b38633] from-[0%] to-[#ebc673] to-[100%] hover:from-[#aa7b2c] hover:via-[#e0bc65] hover:to-[#aa7b2c] text-[#132026] font-bold py-3.5 px-7 rounded-full flex items-center gap-2 transition-all hover:scale-105 shadow-[0_4px_25px_rgba(228,196,120,0.35)] text-[15px]">
+                    Explore Properties <i class="ph ph-arrow-right text-[17px] font-bold"></i>
+                </button>
+                <button onclick="switchPage('sell')" class="bg-transparent border border-[#6b6246] text-[#eecd75] hover:bg-[#a19572]/10 font-medium py-3.5 px-7 rounded-full flex items-center gap-2 transition-all hover:scale-105 text-[15px]">
+                    <i class="ph ph-buildings text-[17px]"></i> List Your Property
+                </button>
+                <button onclick="document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });" class="bg-[#293c4a] hover:bg-[#324a5a] text-[#e5e7eb] font-medium py-3.5 px-7 rounded-full transition-all hover:scale-105 text-[15px]">
+                    Contact Now
+                </button>
+            </div>
+
+            <hr class="border-t border-[#6b6246]/50 mb-8 w-full max-w-[600px]">
+
+            <div class="flex flex-wrap gap-8 md:gap-12">
+                <div>
+                    <h3 class="text-3xl md:text-[36px] font-serif font-bold text-[#eecd75] mb-0.5">500+</h3>
+                    <p class="text-[9px] uppercase tracking-[0.15em] text-[#a19572] font-semibold">Properties Sold</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl md:text-[36px] font-serif font-bold text-[#eecd75] mb-0.5">10+</h3>
+                    <p class="text-[9px] uppercase tracking-[0.15em] text-[#a19572] font-semibold">Years Experience</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl md:text-[36px] font-serif font-bold text-[#eecd75] mb-0.5">1000+</h3>
+                    <p class="text-[9px] uppercase tracking-[0.15em] text-[#a19572] font-semibold">Happy Clients</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-2/5 max-w-md mx-auto lg:mx-0">
+            <div class="bg-white dark:bg-brand-bgLight p-8 rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.15)] dark:shadow-none dark:border dark:border-white/10 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#b38633] via-[#fce490] to-[#b38633]"></div>
+                
+                <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-2 mt-1">Request a <span class="text-[#DDAF3C]">Callback</span></h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">Drop your details and our property experts will get in touch with you shortly.</p>
+
+                <form id="callback-form" action="https://api.web3forms.com/submit" method="POST">
+    
+    <input type="hidden" name="access_key" value="8dbb5479-2414-4e09-bcf6-7d5ac5d2a9de">
+    
+    <div class="mb-4 relative">
+        <i class="ph ph-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10"></i>
+        <input type="text" name="name" placeholder="Your Name" class="w-full bg-gray-50 dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl pl-11 pr-4 py-3 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400" required>
+    </div>
+    
+    <div class="mb-4 relative">
+        <i class="ph ph-phone absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10"></i>
+        <input type="tel" name="phone" placeholder="Phone Number" class="w-full bg-gray-50 dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl pl-11 pr-4 py-3 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400" required>
+    </div>
+
+    <div class="mb-4 relative">
+        <i class="ph ph-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10"></i>
+        <input type="email" name="email" placeholder="Email Address" class="w-full bg-gray-50 dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl pl-11 pr-4 py-3 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400" required>
+    </div>
+
+    <div class="mb-4 relative">
+        <i class="ph ph-map-pin absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10"></i>
+        <input type="text" name="pincode" placeholder="Pincode area you looking for" class="w-full bg-gray-50 dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl pl-11 pr-4 py-3 outline-none focus:border-[#DDAF3C] transition-colors text-sm placeholder-gray-400" required>
+    </div>
+    
+    <div class="mb-6 relative">
+        <i class="ph ph-house absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10"></i>
+        <select name="intent" class="w-full bg-gray-50 dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl pl-11 pr-4 py-3 outline-none focus:border-[#DDAF3C] transition-colors text-sm appearance-none cursor-pointer relative z-0" required>
+            <option value="" disabled selected>I am looking to...</option>
+            <option value="buy">Buy a Property</option>
+            <option value="sell">Sell my Property</option>
+            <option value="rent">Rent/Lease a Property</option>
+            <option value="invest">Invest in Real Estate</option>
+        </select>
+        <i class="ph ph-caret-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10"></i>
+    </div>
+    
+    <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-[#b38633] to-[#ebc673] hover:from-[#a67b2d] hover:to-[#dbb55b] text-[#132026] font-bold py-3.5 rounded-xl transition-transform hover:-translate-y-0.5 shadow-[0_4px_15px_rgba(228,196,120,0.25)] tracking-wide text-[15px] flex justify-center items-center gap-2">
+        Get a Call Back <i class="ph ph-arrow-right font-bold"></i>
+    </button>
+
+    <p id="form-result" class="mt-4 text-center text-sm font-medium hidden"></p>
+</form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+            <section class="py-20 bg-[#f4f7f8] dark:bg-brand-bgLight">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <p class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-3">What We Offer</p>
+                    <h2 class="text-4xl font-serif font-bold mb-14 text-slate-800 dark:text-white">Our <span class="text-brand-gold">Services</span></h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white dark:bg-brand-bg p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d1a654] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_15px_40px_-10px_rgba(209,166,84,0.15)] cursor-pointer group">
+                            <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                                <i class="ph ph-house text-[#132026] text-2xl font-bold"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold mb-3 text-slate-900 dark:text-white group-hover:text-[#d1a654] transition-colors">Villas & Houses</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Premium independent villas and houses in Dehradun's best localities.</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-brand-bg p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d1a654] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_15px_40px_-10px_rgba(209,166,84,0.15)] cursor-pointer group">
+                            <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                                <i class="ph ph-buildings text-[#132026] text-2xl font-bold"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold mb-3 text-slate-900 dark:text-white group-hover:text-[#d1a654] transition-colors">Flats & Apartments</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Modern residential flats and builder floors with top amenities.</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-brand-bg p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d1a654] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_15px_40px_-10px_rgba(209,166,84,0.15)] cursor-pointer group">
+                            <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                                <i class="ph ph-tree-evergreen text-[#132026] text-2xl font-bold"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold mb-3 text-slate-900 dark:text-white group-hover:text-[#d1a654] transition-colors">Plots & Farmhouses</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Investment plots and lush farmhouse properties near nature.</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-brand-bg p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d1a654] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_15px_40px_-10px_rgba(209,166,84,0.15)] cursor-pointer group">
+                            <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                                <i class="ph ph-key text-[#132026] text-2xl font-bold"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold mb-3 text-slate-900 dark:text-white group-hover:text-[#d1a654] transition-colors">Buy & Sell</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">End-to-end assistance for buying or selling your dream property.</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-brand-bg p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d1a654] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_15px_40px_-10px_rgba(209,166,84,0.15)] cursor-pointer group">
+                            <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                                <i class="ph ph-trend-up text-[#132026] text-2xl font-bold"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold mb-3 text-slate-900 dark:text-white group-hover:text-[#d1a654] transition-colors">Rent & Lease</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Hassle-free rental and leasing solutions for every budget.</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-brand-bg p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d1a654] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_15px_40px_-10px_rgba(209,166,84,0.15)] cursor-pointer group">
+                            <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                                <i class="ph ph-handshake text-[#132026] text-2xl font-bold"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold mb-3 text-slate-900 dark:text-white group-hover:text-[#d1a654] transition-colors">Property Consulting</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Expert guidance on real estate investment and market trends.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20" style="background: linear-gradient(315deg, #2a4a5a 0%, #2a4a5a 15%, #162b35 50%, #132026 100%);">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center mb-14">
+                        <p class="text-transparent bg-clip-text bg-gradient-to-r from-[#f2ce79] to-[#DDAF3C] text-[11px] font-bold tracking-[0.3em] uppercase mb-3 inline-block">Featured Listings</p>
+                        <br>
+                        <h2 class="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f6e093] via-[#DDAF3C] to-[#f6e093] pb-1 inline-block">Premium Properties</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-12">
+    
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.2)] border border-white/10 group hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-fit" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+        
+        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" 
+                 data-images='[
+                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600566753086-00f18efc204b?auto=format&fit=crop&w=800&q=80"
+                 ]'
+                 data-index="0"
+                 alt="Villa" 
+                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700 cursor-pointer" 
+                 onclick="switchPage('detail')">
+            
+            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                <span class="bg-gradient-to-r from-[#b38633] from-[0%] to-[#ebc673] to-[100%] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">Villa</span>
+                <span class="bg-[#132026]/70 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md tracking-wider uppercase">Buy</span>
+            </div>
+
+            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-heart text-sm"></i>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-share-network text-sm"></i>
+                </button>
+            </div>
+
+            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-left text-sm"></i>
+            </button>
+            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-right text-sm"></i>
+            </button>
+
+            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+            </div>
+
+            <div class="absolute bottom-3 right-3 bg-[#1E3946]/90 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1.5 rounded-lg shadow-lg text-xs border border-white/10 z-10">₹2.5 Cr</div>
+        </div>
+
+        <div class="p-4 flex flex-col flex-grow">
+            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 cursor-pointer hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Luxury Villa in Rajpur Road</h3>
+            <p class="text-gray-500 text-[11px] flex items-center gap-1 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Rajpur Road, Dehradun</p>
+            <div class="flex justify-between items-center text-[11px] text-gray-500 border-t border-gray-100 pt-3 mb-4">
+                <span class="flex items-center gap-1"><i class="ph ph-bed text-base"></i> 4 Beds</span>
+                <span class="flex items-center gap-1"><i class="ph ph-bathtub text-base"></i> 3 Baths</span>
+                <span class="flex items-center gap-1"><i class="ph ph-corners-out text-base"></i> 3200 sq.ft</span>
+            </div>
+            
+            <div class="mt-auto flex gap-2">
+                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] hover:bg-[#162b35] transition-all shadow-md group">
+                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                </button>
+                <button class="w-9 h-9 border border-gray-200 rounded-lg flex items-center justify-center text-gray-500 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                    <i class="ph ph-calculator text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.2)] border border-white/10 group hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-fit" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+        
+        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" 
+                 data-images='[
+                    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80"
+                 ]'
+                 data-index="0"
+                 alt="Apartment" 
+                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700 cursor-pointer" 
+                 onclick="switchPage('detail')">
+            
+            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                <span class="bg-gradient-to-r from-[#b38633] from-[0%] to-[#ebc673] to-[100%] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">Flat</span>
+                <span class="bg-[#132026]/70 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md tracking-wider uppercase">Buy</span>
+            </div>
+
+            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-heart text-sm"></i>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-share-network text-sm"></i>
+                </button>
+            </div>
+
+            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-left text-sm"></i>
+            </button>
+            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-right text-sm"></i>
+            </button>
+
+            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+            </div>
+
+            <div class="absolute bottom-3 right-3 bg-[#1E3946]/90 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1.5 rounded-lg shadow-lg text-xs border border-white/10 z-10">₹85 Lacs</div>
+        </div>
+
+        <div class="p-4 flex flex-col flex-grow">
+            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 cursor-pointer hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Premium 3BHK Apartment</h3>
+            <p class="text-gray-500 text-[11px] flex items-center gap-1 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Jakhan, Dehradun</p>
+            <div class="flex justify-between items-center text-[11px] text-gray-500 border-t border-gray-100 pt-3 mb-4">
+                <span class="flex items-center gap-1"><i class="ph ph-bed text-base"></i> 3 Beds</span>
+                <span class="flex items-center gap-1"><i class="ph ph-bathtub text-base"></i> 2 Baths</span>
+                <span class="flex items-center gap-1"><i class="ph ph-corners-out text-base"></i> 1650 sq.ft</span>
+            </div>
+            
+            <div class="mt-auto flex gap-2">
+                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] hover:bg-[#162b35] transition-all shadow-md group">
+                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                </button>
+                <button class="w-9 h-9 border border-gray-200 rounded-lg flex items-center justify-center text-gray-500 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                    <i class="ph ph-calculator text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.2)] border border-white/10 group hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-fit" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+        
+        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" 
+                 data-images='[
+                    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1629196914205-d98c25db8059?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb65?auto=format&fit=crop&w=800&q=80"
+                 ]'
+                 data-index="0"
+                 alt="Plot" 
+                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700 cursor-pointer" 
+                 onclick="switchPage('detail')">
+            
+            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                <span class="bg-gradient-to-r from-[#b38633] from-[0%] to-[#ebc673] to-[100%] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">Plot</span>
+                <span class="bg-[#132026]/70 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md tracking-wider uppercase">Buy</span>
+            </div>
+
+            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-heart text-sm"></i>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-share-network text-sm"></i>
+                </button>
+            </div>
+
+            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-left text-sm"></i>
+            </button>
+            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-right text-sm"></i>
+            </button>
+
+            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+            </div>
+
+            <div class="absolute bottom-3 right-3 bg-[#1E3946]/90 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1.5 rounded-lg shadow-lg text-xs border border-white/10 z-10">₹1.2 Cr</div>
+        </div>
+
+        <div class="p-4 flex flex-col flex-grow">
+            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 cursor-pointer hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Farmhouse Plot with View</h3>
+            <p class="text-gray-500 text-[11px] flex items-center gap-1 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Sahaspur, Dehradun</p>
+            <div class="flex justify-between items-center text-[11px] text-gray-500 border-t border-gray-100 pt-3 mb-4">
+                <span class="flex items-center gap-1"><i class="ph ph-corners-out text-base"></i> 5000 sq.yd</span>
+            </div>
+            
+            <div class="mt-auto flex gap-2">
+                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] hover:bg-[#162b35] transition-all shadow-md group">
+                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                </button>
+                <button class="w-9 h-9 border border-gray-200 rounded-lg flex items-center justify-center text-gray-500 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                    <i class="ph ph-calculator text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+                    <div class="flex justify-center mt-4">
+                        <button onclick="switchPage('explore')" class="bg-gradient-to-r from-[#b38633] from-[0%] to-[#ebc673] to-[100%] hover:from-[#aa7b2c] hover:via-[#e0bc65] hover:to-[#aa7b2c] text-[#132026] font-bold py-3.5 px-8 rounded-full flex items-center gap-2 transition-all hover:scale-105 shadow-[0_4px_25px_rgba(228,196,120,0.25)] text-[15px]">
+                            View All Properties <i class="ph ph-arrow-right text-[17px] font-bold"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="py-20 bg-brand-bgWhite dark:bg-brand-bgLight border-y border-gray-100 dark:border-white/5">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row items-center gap-16">
+                       <div class="w-full md:w-1/2 flex justify-center">
+    <div class="relative">
+        <div class="w-80 h-80 md:w-[400px] md:h-[400px] rounded-full bg-brand-bg flex items-center justify-center border-[10px] border-white dark:border-brand-bg shadow-2xl relative z-10 transition-transform duration-700 hover:rotate-6 overflow-hidden">
+            
+            <img src="logomax.png" alt="Dream Nest Realty Logo" class="w-full h-full object-cover">
+            
+        </div>
+        
+        <div class="absolute -bottom-4 right-0 md:-right-10 bg-gradient-to-br from-[#bc8c3c] via-[#f2ce79] to-[#bc8c3c] text-[#132026] font-serif font-bold py-2.5 px-6 rounded-full z-20 shadow-[0_4px_15px_rgba(228,196,120,0.3)] text-sm tracking-wide">
+            Since 2014
+        </div>
+    </div>
+</div>
+                        <div class="w-full md:w-1/2">
+                            <p class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-3">About Us</p>
+                            <h2 class="text-4xl font-serif font-bold mb-6 text-slate-800 dark:text-white">Your Trusted <span class="text-brand-gold">Property Partner</span></h2>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                                Dream Nest Realty is Dehradun's premier real estate consultancy, dedicated to helping you find the perfect property. Whether you're looking to buy, sell, rent, or lease — we make your real estate journey smooth and rewarding.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3 text-slate-800 dark:text-gray-200 font-medium text-sm">
+                                    <i class="ph-fill ph-check-circle text-brand-gold text-xl"></i> Trusted by 1000+ families in Dehradun
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-800 dark:text-gray-200 font-medium text-sm">
+                                    <i class="ph-fill ph-check-circle text-brand-gold text-xl"></i> Transparent and hassle-free transactions
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-800 dark:text-gray-200 font-medium text-sm">
+                                    <i class="ph-fill ph-check-circle text-brand-gold text-xl"></i> Expert local market knowledge
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-800 dark:text-gray-200 font-medium text-sm">
+                                    <i class="ph-fill ph-check-circle text-brand-gold text-xl"></i> End-to-end property solutions
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-800 dark:text-gray-200 font-medium text-sm">
+                                    <i class="ph-fill ph-check-circle text-brand-gold text-xl"></i> RERA compliant properties
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20 bg-brand-bgWhite dark:bg-brand-bg">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <p class="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-3">Testimonials</p>
+        <h2 class="text-4xl font-serif font-bold mb-12 text-slate-800 dark:text-white">What Our <span class="text-brand-gold">Clients Say</span></h2>
+        
+        <div class="bg-white dark:bg-brand-bgLight p-10 md:p-16 rounded-3xl shadow-sm border border-gray-200 dark:border-white/5 relative min-h-[300px] flex flex-col justify-center">
+            <i class="ph-fill ph-quotes text-brand-gold/20 text-6xl absolute top-8 left-8"></i>
+            <div class="flex justify-center gap-1 mb-6 text-brand-gold text-xl">
+                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            
+            <div id="testimonial-content" class="transition-opacity duration-300 opacity-100">
+                <p id="testimonial-text" class="text-xl md:text-2xl text-slate-700 dark:text-gray-300 italic mb-8 relative z-10 leading-relaxed font-serif">
+                    "Dream Nest Realty made our home-buying journey incredibly smooth. Their knowledge of Dehradun's market is unmatched. Highly recommended!"
+                </p>
+                <div>
+                    <h4 id="testimonial-name" class="font-serif font-bold text-lg text-slate-900 dark:text-white">Ankit Rawat</h4>
+                    <p id="testimonial-role" class="text-gray-500 dark:text-gray-400 text-sm">Homeowner</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex justify-center items-center gap-4 mt-8">
+            <button onclick="changeTestimonial('prev')" class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-brand-gold hover:border-brand-gold hover:text-brand-bg transition dark:text-white"><i class="ph ph-caret-left"></i></button>
+            
+            <div id="testimonial-dots" class="flex gap-2 items-center">
+                <div class="w-8 h-2 rounded-full bg-brand-gold transition-all duration-300"></div>
+                <div class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300"></div>
+                <div class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300"></div>
+            </div>
+            
+            <button onclick="changeTestimonial('next')" class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-brand-gold hover:border-brand-gold hover:text-brand-bg transition dark:text-white"><i class="ph ph-caret-right"></i></button>
+        </div>
+    </div>
+</section>
+
+           <section id="contact-section" class="py-20 bg-brand-bg dark:bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="text-center mb-14">
+    <p class="text-transparent bg-clip-text bg-gradient-to-r from-[#f2ce79] to-[#DDAF3C] text-[11px] font-bold tracking-[0.3em] uppercase mb-2 inline-block leading-none">
+        Reach Out
+    </p>
+    
+    <div class="flex justify-center">
+        <h2 class="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f6e093] via-[#DDAF3C] to-[#f6e093] inline-block leading-tight">
+            Get in Touch
+        </h2>
+    </div>
+</div>
+        
+                   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 mt-12">
+    <div class="bg-brand-bgLight p-8 rounded-2xl text-center border-[0.5px] border-white/5 hover:border-[#DDAF3C]/50 shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+            <i class="ph ph-phone-call text-[#132026] text-2xl font-bold"></i>
+        </div>
+        <h4 class="text-brand-gold font-serif font-bold text-lg mb-2">Call Us</h4>
+        <p class="text-gray-300 text-sm tracking-wide">+91 98112 21604<br>+91 81267 71417</p>
+    </div>
+    
+    <div class="bg-brand-bgLight p-8 rounded-2xl text-center border-[0.5px] border-white/5 hover:border-[#DDAF3C]/50 shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+            <i class="ph ph-map-pin text-[#132026] text-2xl font-bold"></i>
+        </div>
+        <h4 class="text-brand-gold font-serif font-bold text-lg mb-2">Visit Us</h4>
+        <p class="text-gray-300 text-sm tracking-wide leading-relaxed">Shop No.1, Canal Road<br>Opp. Superia Apartments<br>Jakhan, Dehradun - 248009</p>
+    </div>
+    
+    <div class="bg-brand-bgLight p-8 rounded-2xl text-center border-[0.5px] border-white/5 hover:border-[#DDAF3C]/50 shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+            <i class="ph ph-envelope-simple text-[#132026] text-2xl font-bold"></i>
+        </div>
+        <h4 class="text-brand-gold font-serif font-bold text-lg mb-2">Email Us</h4>
+        <p class="text-gray-300 text-sm tracking-wide">info@dreamnestrealty.in</p>
+    </div>
+    
+    <div class="bg-brand-bgLight p-8 rounded-2xl text-center border-[0.5px] border-white/5 hover:border-[#DDAF3C]/50 shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#b38633] to-[#ebc673] rounded-xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+            <i class="ph ph-clock text-[#132026] text-2xl font-bold"></i>
+        </div>
+        <h4 class="text-brand-gold font-serif font-bold text-lg mb-2">Working Hours</h4>
+        <p class="text-gray-300 text-sm tracking-wide leading-relaxed">Mon - Sat: 10AM - 7PM<br>Sunday: By Appointment</p>
+    </div>
+</div>
+<a href="https://wa.me/919811221604" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-[#b38633] from-[0%] to-[#ebc673] to-[100%] hover:from-[#aa7b2c] hover:via-[#e0bc65] hover:to-[#aa7b2c] text-[#132026] font-bold py-3.5 px-8 rounded-full inline-flex items-center gap-2 transition-all hover:scale-105 shadow-[0_4px_25px_rgba(228,196,120,0.25)] text-sm tracking-wide cursor-pointer">
+    <i class="ph-fill ph-whatsapp-logo text-xl"></i> Chat on WhatsApp
+</a>
+                    
+                </div>
+            </section>
+            
+        </main> <main id="view-explore" class="view-section flex-grow pt-28 pb-20 hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-8 border-b border-gray-200 dark:border-white/10 pb-6">
+                    <h1 class="text-4xl font-serif font-bold text-slate-800 dark:text-white mb-2">Explore <span class="text-brand-gold">Properties</span></h1>
+                    <p id="explore-result-count" class="text-gray-500 dark:text-gray-400">3 properties found in Dehradun</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="w-full lg:w-1/4">
+    <div class="bg-white dark:bg-brand-bgLight p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-white/10 sticky top-28">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="font-serif font-bold text-lg text-slate-800 dark:text-white">Filters</h3>
+            <button id="clear-filters-btn" class="text-brand-gold text-xs font-semibold hover:underline">Clear all</button>
+        </div>
+
+        <div class="mb-6">
+            <label id="budget-label" class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Budget: ₹0 - ₹4.0 Cr</label>
+            <input type="range" id="filter-budget" class="w-full accent-brand-gold" min="0" max="400" value="400" step="5">
+        </div>
+
+        <div class="mb-6">
+            <label id="area-label" class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Area: 0 - 10000 sq.ft</label>
+            <input type="range" id="filter-area" class="w-full accent-brand-gold" min="0" max="10000" value="10000" step="100">
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Location</label>
+            <select id="filter-location" class="w-full bg-white dark:bg-brand-bg border border-gray-200 dark:border-white/10 text-slate-700 dark:text-white rounded-lg px-4 py-2.5 outline-none focus:border-brand-gold cursor-pointer transition-colors text-sm">
+                <option value="All Locations">All Locations</option>
+                <option value="Rajpur Road">Rajpur Road</option>
+                <option value="Jakhan">Jakhan</option>
+                <option value="Sahaspur">Sahaspur</option>
+                <option value="Ballupur">Ballupur</option>
+            </select>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-3">Property Type</label>
+            <div class="flex flex-wrap gap-2">
+                <button data-value="villa" class="filter-type-btn px-4 py-1.5 text-xs font-medium border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-300 rounded-full hover:border-brand-gold hover:text-brand-gold transition-colors">Villa</button>
+                <button data-value="flat" class="filter-type-btn px-4 py-1.5 text-xs font-medium border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-300 rounded-full hover:border-brand-gold hover:text-brand-gold transition-colors">Flat</button>
+                <button data-value="plot" class="filter-type-btn px-4 py-1.5 text-xs font-medium border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-300 rounded-full hover:border-brand-gold hover:text-brand-gold transition-colors">Plot</button>
+                <button data-value="farmhouse" class="filter-type-btn px-4 py-1.5 text-xs font-medium border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-300 rounded-full hover:border-brand-gold hover:text-brand-gold transition-colors">Farmhouse</button>
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-3">Status</label>
+            <div class="flex flex-wrap gap-2">
+                <button data-value="buy" class="filter-status-btn px-4 py-1.5 text-xs font-medium border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-300 rounded-full hover:border-brand-gold hover:text-brand-gold transition-colors">Buy</button>
+                <button data-value="rent" class="filter-status-btn px-4 py-1.5 text-xs font-medium border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-300 rounded-full hover:border-brand-gold hover:text-brand-gold transition-colors">Rent</button>
+                <button data-value="lease" class="filter-status-btn px-4 py-1.5 text-xs font-medium border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-300 rounded-full hover:border-brand-gold hover:text-brand-gold transition-colors">Lease</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <div class="w-full lg:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <div class="property-card bg-white dark:bg-brand-bgLight rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-white/10 group cursor-pointer transition-all duration-300 hover:-translate-y-1 h-fit flex flex-col" data-price="250" data-area="3200" data-location="Rajpur Road" data-type="villa" data-status="buy" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+        
+        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" 
+                 data-images='[
+                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600566753086-00f18efc204b?auto=format&fit=crop&w=800&q=80"
+                 ]'
+                 data-index="0"
+                 alt="Villa" 
+                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700" 
+                 onclick="switchPage('detail')">
+            
+            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                <span class="bg-gradient-to-r from-[#b38633] to-[#ebc673] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">VILLA</span>
+            </div>
+
+            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-heart text-sm"></i>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-share-network text-sm"></i>
+                </button>
+            </div>
+
+            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-left text-sm"></i>
+            </button>
+            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-right text-sm"></i>
+            </button>
+
+            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+            </div>
+
+            <div class="absolute bottom-3 right-3 bg-[#132026]/80 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1 rounded-lg text-xs shadow-md border border-white/10 z-10">₹2.5 Cr</div>
+        </div>
+        
+        <div class="p-4 flex flex-col flex-grow">
+            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 dark:text-white group-hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Luxury Villa</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-[11px] flex items-center gap-1.5 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Rajpur Road</p>
+            
+            <div class="mt-auto flex gap-2">
+                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] transition-all shadow-md group">
+                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                    <i class="ph ph-arrow-right text-[#DDAF3C] group-hover:translate-x-1 transition-transform text-xs"></i>
+                </button>
+                <button class="w-9 h-9 border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                    <i class="ph ph-calculator text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADDED MISSING CLASS AND DATA ATTRIBUTES TO CARD 2 -->
+    <div class="property-card bg-white dark:bg-brand-bgLight rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-white/10 group cursor-pointer transition-all duration-300 hover:-translate-y-1 h-fit flex flex-col" data-price="85" data-area="1650" data-location="Jakhan" data-type="flat" data-status="buy" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+        
+        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" 
+                 data-images='[
+                    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80"
+                 ]'
+                 data-index="0"
+                 alt="Apartment" 
+                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700" 
+                 onclick="switchPage('detail')">
+            
+            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                <span class="bg-gradient-to-r from-[#b38633] to-[#ebc673] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">FLAT</span>
+            </div>
+
+            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-heart text-sm"></i>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-share-network text-sm"></i>
+                </button>
+            </div>
+
+            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-left text-sm"></i>
+            </button>
+            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-right text-sm"></i>
+            </button>
+
+            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+            </div>
+
+            <div class="absolute bottom-3 right-3 bg-[#132026]/80 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1 rounded-lg text-xs shadow-md border border-white/10 z-10">₹85 Lacs</div>
+        </div>
+        
+        <div class="p-4 flex flex-col flex-grow">
+            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 dark:text-white group-hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Premium 3BHK Apartment</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-[11px] flex items-center gap-1.5 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Jakhan</p>
+            
+            <div class="mt-auto flex gap-2">
+                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] transition-all shadow-md group">
+                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                    <i class="ph ph-arrow-right text-[#DDAF3C] group-hover:translate-x-1 transition-transform text-xs"></i>
+                </button>
+                <button class="w-9 h-9 border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                    <i class="ph ph-calculator text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADDED MISSING CLASS AND DATA ATTRIBUTES TO CARD 3 -->
+    <div class="property-card bg-white dark:bg-brand-bgLight rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-white/10 group cursor-pointer transition-all duration-300 hover:-translate-y-1 h-fit flex flex-col" data-price="120" data-area="5000" data-location="Sahaspur" data-type="plot" data-status="buy" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+        
+        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" 
+                 data-images='[
+                    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1629196914205-d98c25db8059?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb65?auto=format&fit=crop&w=800&q=80"
+                 ]'
+                 data-index="0"
+                 alt="Plot" 
+                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700" 
+                 onclick="switchPage('detail')">
+            
+            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                <span class="bg-gradient-to-r from-[#b38633] to-[#ebc673] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">PLOT</span>
+            </div>
+
+            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-heart text-sm"></i>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                    <i class="ph ph-share-network text-sm"></i>
+                </button>
+            </div>
+
+            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-left text-sm"></i>
+            </button>
+            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                <i class="ph ph-caret-right text-sm"></i>
+            </button>
+
+            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+            </div>
+
+            <div class="absolute bottom-3 right-3 bg-[#132026]/80 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1 rounded-lg text-xs shadow-md border border-white/10 z-10">₹1.2 Cr</div>
+        </div>
+        
+        <div class="p-4 flex flex-col flex-grow">
+            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 dark:text-white group-hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Farmhouse Plot</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-[11px] flex items-center gap-1.5 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Sahaspur</p>
+            
+            <div class="mt-auto flex gap-2">
+                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] transition-all shadow-md group">
+                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                    <i class="ph ph-arrow-right text-[#DDAF3C] group-hover:translate-x-1 transition-transform text-xs"></i>
+                </button>
+                <button class="w-9 h-9 border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                    <i class="ph ph-calculator text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+                </div>
+            </div>
+        </main>
+
+        <main id="view-buy" class="view-section flex-grow pt-28 pb-20 hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="mb-12 border-b border-gray-200 dark:border-white/10 pb-8">
+                    <p class="text-brand-gold text-[11px] font-bold tracking-[0.25em] uppercase mb-3">Buy Property</p>
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-800 dark:text-white mb-4">Find Your <span class="text-brand-gold">Dream Home</span></h1>
+                    <p class="text-gray-500 dark:text-gray-400 max-w-2xl text-sm leading-relaxed">
+                        Browse premium properties available for purchase in Dehradun. From luxury villas to affordable apartments.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left mb-12">
+                    
+                    <div class="bg-white dark:bg-brand-bgLight rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-white/10 group cursor-pointer transition-all duration-300 hover:-translate-y-1 h-fit flex flex-col" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+                        
+                        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" 
+                                 data-images='[
+                                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+                                    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
+                                    "https://images.unsplash.com/photo-1600566753086-00f18efc204b?auto=format&fit=crop&w=800&q=80"
+                                 ]'
+                                 data-index="0"
+                                 alt="Villa" 
+                                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700" 
+                                 onclick="switchPage('detail')">
+                            
+                            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                                <span class="bg-gradient-to-r from-[#b38633] to-[#ebc673] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">VILLA</span>
+                                <span class="bg-[#132026]/80 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md tracking-wider uppercase">Buy</span>
+                            </div>
+
+                            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                                    <i class="ph ph-heart text-sm"></i>
+                                </button>
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                                    <i class="ph ph-share-network text-sm"></i>
+                                </button>
+                            </div>
+
+                            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                                <i class="ph ph-caret-left text-sm"></i>
+                            </button>
+                            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                                <i class="ph ph-caret-right text-sm"></i>
+                            </button>
+
+                            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                            </div>
+
+                            <div class="absolute bottom-3 right-3 bg-[#132026]/80 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1 rounded-lg text-xs shadow-md border border-white/10 z-10">₹2.5 Cr</div>
+                        </div>
+                        
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 dark:text-white group-hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Luxury Villa in Rajpur Road</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-[11px] flex items-center gap-1.5 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Rajpur Road, Dehradun</p>
+                            <div class="flex justify-between items-center text-[11px] text-gray-500 border-t border-gray-100 pt-3 mb-4">
+                                <span class="flex items-center gap-1"><i class="ph ph-bed text-base"></i> 4 Beds</span>
+                                <span class="flex items-center gap-1"><i class="ph ph-bathtub text-base"></i> 3 Baths</span>
+                                <span class="flex items-center gap-1"><i class="ph ph-corners-out text-base"></i> 3200 sq.ft</span>
+                            </div>
+                            
+                            <div class="mt-auto flex gap-2">
+                                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] transition-all shadow-md group">
+                                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                                </button>
+                                <button class="w-9 h-9 border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                                    <i class="ph ph-calculator text-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-bgLight rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-white/10 group cursor-pointer transition-all duration-300 hover:-translate-y-1 h-fit flex flex-col" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+                        
+                        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" 
+                                 data-images='[
+                                    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+                                    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80",
+                                    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80"
+                                 ]'
+                                 data-index="0"
+                                 alt="Apartment" 
+                                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700" 
+                                 onclick="switchPage('detail')">
+                            
+                            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                                <span class="bg-gradient-to-r from-[#b38633] to-[#ebc673] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">FLAT</span>
+                                <span class="bg-[#132026]/80 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md tracking-wider uppercase">Buy</span>
+                            </div>
+
+                            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                                    <i class="ph ph-heart text-sm"></i>
+                                </button>
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                                    <i class="ph ph-share-network text-sm"></i>
+                                </button>
+                            </div>
+
+                            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                                <i class="ph ph-caret-left text-sm"></i>
+                            </button>
+                            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                                <i class="ph ph-caret-right text-sm"></i>
+                            </button>
+
+                            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                            </div>
+
+                            <div class="absolute bottom-3 right-3 bg-[#132026]/80 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1 rounded-lg text-xs shadow-md border border-white/10 z-10">₹85 Lacs</div>
+                        </div>
+                        
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 dark:text-white group-hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Premium 3BHK Apartment</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-[11px] flex items-center gap-1.5 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Jakhan, Dehradun</p>
+                            <div class="flex justify-between items-center text-[11px] text-gray-500 border-t border-gray-100 pt-3 mb-4">
+                                <span class="flex items-center gap-1"><i class="ph ph-bed text-base"></i> 3 Beds</span>
+                                <span class="flex items-center gap-1"><i class="ph ph-bathtub text-base"></i> 2 Baths</span>
+                                <span class="flex items-center gap-1"><i class="ph ph-corners-out text-base"></i> 1650 sq.ft</span>
+                            </div>
+                            
+                            <div class="mt-auto flex gap-2">
+                                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] transition-all shadow-md group">
+                                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                                </button>
+                                <button class="w-9 h-9 border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                                    <i class="ph ph-calculator text-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-bgLight rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-white/10 group cursor-pointer transition-all duration-300 hover:-translate-y-1 h-fit flex flex-col" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
+                        
+                        <div class="relative h-48 overflow-hidden shrink-0 group/image rounded-t-2xl transform-gpu">
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" 
+                                 data-images='[
+                                    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+                                    "https://images.unsplash.com/photo-1629196914205-d98c25db8059?auto=format&fit=crop&w=800&q=80",
+                                    "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb65?auto=format&fit=crop&w=800&q=80"
+                                 ]'
+                                 data-index="0"
+                                 alt="Plot" 
+                                 class="carousel-img w-full h-full object-cover rounded-t-2xl group-hover/image:scale-110 transition-transform duration-700" 
+                                 onclick="switchPage('detail')">
+                            
+                            <div class="absolute top-3 left-3 flex gap-2 z-10">
+                                <span class="bg-gradient-to-r from-[#b38633] to-[#ebc673] text-[#132026] text-[9px] font-bold px-2.5 py-1 rounded-full shadow-md tracking-wider uppercase">PLOT</span>
+                                <span class="bg-[#132026]/80 text-white text-[9px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md tracking-wider uppercase">Buy</span>
+                            </div>
+
+                            <div class="absolute top-3 right-3 flex gap-2 z-10">
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-[#eecd75] hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                                    <i class="ph ph-heart text-sm"></i>
+                                </button>
+                                <button class="w-8 h-8 rounded-full bg-[#132026]/70 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#DDAF3C] hover:text-[#132026] transition-colors shadow-md">
+                                    <i class="ph ph-share-network text-sm"></i>
+                                </button>
+                            </div>
+
+                            <button onclick="changeImage(this, 'prev', event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                                <i class="ph ph-caret-left text-sm"></i>
+                            </button>
+                            <button onclick="changeImage(this, 'next', event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#132026]/70 text-white flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity backdrop-blur-sm shadow-md hover:bg-[#DDAF3C] hover:text-[#132026] z-20">
+                                <i class="ph ph-caret-right text-sm"></i>
+                            </button>
+
+                            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                                <div class="w-1.5 h-1.5 rounded-full bg-[#DDAF3C] shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/60 shadow-sm transition-colors duration-300"></div>
+                            </div>
+
+                            <div class="absolute bottom-3 right-3 bg-[#132026]/80 backdrop-blur-md text-[#eecd75] font-serif font-bold px-3 py-1 rounded-lg text-xs shadow-md border border-white/10 z-10">₹1.2 Cr</div>
+                        </div>
+                        
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="text-lg font-serif font-bold mb-1 text-slate-900 dark:text-white group-hover:text-[#DDAF3C] transition-colors leading-tight" onclick="switchPage('detail')">Farmhouse Plot with Mountain View</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-[11px] flex items-center gap-1.5 mb-3"><i class="ph ph-map-pin text-[#DDAF3C]"></i> Sahaspur, Dehradun</p>
+                            <div class="flex justify-between items-center text-[11px] text-gray-500 border-t border-gray-100 pt-3 mb-4">
+                                <span class="flex items-center gap-1"><i class="ph ph-corners-out text-base"></i> 5000 sq.yd</span>
+                            </div>
+                            
+                            <div class="mt-auto flex gap-2">
+                                <button onclick="switchPage('detail')" class="flex-1 bg-[#1E3946] border border-[#1E3946] rounded-lg py-2 flex items-center justify-center gap-2 hover:border-[#DDAF3C] transition-all shadow-md group">
+                                    <span class="font-bold text-[#DDAF3C] tracking-wide text-xs">View Details</span>
+                                </button>
+                                <button class="w-9 h-9 border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#DDAF3C] hover:border-[#DDAF3C] transition-colors shadow-sm">
+                                    <i class="ph ph-calculator text-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <main id="view-detail" class="view-section flex-grow pt-24 pb-20 hidden bg-brand-bgWhite dark:bg-brand-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <button onclick="switchPage('explore')" class="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-brand-gold mb-6 transition group text-sm font-medium">
+                    <i class="ph ph-arrow-left group-hover:-translate-x-1 transition-transform"></i> Back to listings
+                </button>
+
+                <div class="flex flex-col lg:flex-row gap-8 mb-12">
+                    <div class="w-full lg:w-3/5">
+    <div class="relative h-[400px] md:h-[480px] rounded-2xl overflow-hidden mb-4 shadow-md group">
+        
+        <img id="detail-main-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Main Property" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+        
+        <div class="absolute top-4 left-4 flex gap-2 z-10">
+            <span class="bg-brand-gold text-brand-bg text-xs font-bold px-4 py-1.5 rounded-full shadow-sm tracking-wide uppercase">VILLA</span>
+            <span class="bg-brand-bg/80 text-white text-xs font-bold px-4 py-1.5 rounded-full backdrop-blur-sm shadow-sm tracking-wide uppercase">Buy</span>
+        </div>
+        
+        <button onclick="changeDetailImage('prev')" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-brand-bg/60 text-white flex items-center justify-center hover:bg-brand-gold hover:text-brand-bg transition backdrop-blur-sm shadow-md opacity-0 group-hover:opacity-100 z-10">
+            <i class="ph ph-caret-left"></i>
+        </button>
+        <button onclick="changeDetailImage('next')" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-brand-bg/60 text-white flex items-center justify-center hover:bg-brand-gold hover:text-brand-bg transition backdrop-blur-sm shadow-md opacity-0 group-hover:opacity-100 z-10">
+            <i class="ph ph-caret-right"></i>
+        </button>
+    </div>
+    
+    <div class="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
+        <img onclick="changeDetailImage(0)" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" class="detail-thumb w-20 h-20 rounded-lg object-cover cursor-pointer border-2 border-brand-gold shadow-sm transition-all">
+        
+        <img onclick="changeDetailImage(1)" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" class="detail-thumb w-20 h-20 rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-brand-gold/50 opacity-50 hover:opacity-100 shadow-sm transition-all">
+        
+        <img onclick="changeDetailImage(2)" src="https://images.unsplash.com/photo-1600566753086-00f18efc204b?auto=format&fit=crop&w=800&q=80" class="detail-thumb w-20 h-20 rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-brand-gold/50 opacity-50 hover:opacity-100 shadow-sm transition-all">
+    </div>
+</div>
+
+                    <div class="w-full lg:w-2/5">
+                        <h1 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">Luxury Villa in Rajpur Road</h1>
+                        <p class="text-gray-500 dark:text-gray-400 flex items-center gap-1.5 mb-6 text-sm"><i class="ph ph-map-pin"></i> Rajpur Road, Dehradun</p>
+
+                        <div class="bg-white dark:bg-brand-bgLight p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-white/10 mb-6">
+                            <h2 class="text-4xl font-serif font-bold text-brand-gold mb-1">₹2.5 Cr</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">EMI from ₹1,85,000/mo</p>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4 mb-6 text-center">
+                            <div class="bg-white dark:bg-brand-bgLight p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm">
+                                <i class="ph ph-bed text-brand-gold text-2xl mb-1.5 inline-block"></i>
+                                <p class="font-bold text-slate-900 dark:text-white text-lg leading-tight">4</p>
+                                <p class="text-[10px] uppercase tracking-wide text-gray-500 mt-0.5">Bedrooms</p>
+                            </div>
+                            <div class="bg-white dark:bg-brand-bgLight p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm">
+                                <i class="ph ph-bathtub text-brand-gold text-2xl mb-1.5 inline-block"></i>
+                                <p class="font-bold text-slate-900 dark:text-white text-lg leading-tight">3</p>
+                                <p class="text-[10px] uppercase tracking-wide text-gray-500 mt-0.5">Bathrooms</p>
+                            </div>
+                            <div class="bg-white dark:bg-brand-bgLight p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm">
+                                <i class="ph ph-corners-out text-brand-gold text-2xl mb-1.5 inline-block"></i>
+                                <p class="font-bold text-slate-900 dark:text-white text-lg leading-tight">3200</p>
+                                <p class="text-[10px] uppercase tracking-wide text-gray-500 mt-0.5">sq.ft Area</p>
+                            </div>
+                        </div>
+
+                      <div class="flex gap-3 mb-5">
+    <a href="tel:+919811221604" class="flex-1 bg-brand-bg dark:bg-brand-bgLight dark:border dark:border-white/20 text-white font-semibold py-3.5 rounded-xl hover:bg-slate-800 dark:hover:bg-[#1E3946] hover:text-[#DDAF3C] transition-all shadow-sm text-sm flex items-center justify-center gap-2 cursor-pointer group">
+        <i class="ph ph-phone text-lg group-hover:-rotate-12 transition-transform"></i> Contact Agent
+    </a>
+</div>
+
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 border-t border-gray-200 dark:border-white/10 pt-12">
+                    <div>
+                        <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Description</h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                            A stunning luxury villa situated on the prestigious Rajpur Road. This property features 4 spacious bedrooms, a private garden, a swimming pool, and modern amenities throughout. Perfect for families seeking a premium lifestyle in Dehradun.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Amenities</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-brand-bgLight border border-gray-200 dark:border-white/10 px-4 py-3.5 rounded-xl flex items-center gap-3 text-slate-700 dark:text-gray-300 shadow-sm cursor-default text-sm">
+                                <div class="w-2 h-2 rounded-full bg-brand-gold"></div> Swimming Pool
+                            </div>
+                            <div class="bg-white dark:bg-brand-bgLight border border-gray-200 dark:border-white/10 px-4 py-3.5 rounded-xl flex items-center gap-3 text-slate-700 dark:text-gray-300 shadow-sm cursor-default text-sm">
+                                <div class="w-2 h-2 rounded-full bg-brand-gold"></div> Garden
+                            </div>
+                            <div class="bg-white dark:bg-brand-bgLight border border-gray-200 dark:border-white/10 px-4 py-3.5 rounded-xl flex items-center gap-3 text-slate-700 dark:text-gray-300 shadow-sm cursor-default text-sm">
+                                <div class="w-2 h-2 rounded-full bg-brand-gold"></div> Parking
+                            </div>
+                            <div class="bg-white dark:bg-brand-bgLight border border-gray-200 dark:border-white/10 px-4 py-3.5 rounded-xl flex items-center gap-3 text-slate-700 dark:text-gray-300 shadow-sm cursor-default text-sm">
+                                <div class="w-2 h-2 rounded-full bg-brand-gold"></div> Security
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="bg-brand-bg border-t border-brand-bgLight pt-12 pb-6 mt-auto text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+                    <div class="flex items-center cursor-pointer" onclick="switchPage('home')">
+                        <div class="w-10 h-10 rounded-full border-[1.5px] border-[#e4c478] flex items-center justify-center mr-3 bg-brand-bg">
+                            <i class="ph ph-house text-[#e4c478] text-xl"></i>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <h2 class="font-serif font-bold text-lg text-[#e4c478] leading-none tracking-wide hover:text-[#fce490] transition-colors">Dream Nest Realty</h2>
+                            <p class="text-[10px] text-[#a19572] mt-1 font-medium tracking-wide">Where Dreams Find a Home</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap justify-center gap-6 text-sm text-[#a19572]">
+                        <button onclick="switchPage('home')" class="hover:text-[#e4c478] transition-colors">Home</button>
+                        <button class="hover:text-[#e4c478] transition-colors">Services</button>
+                        <button onclick="switchPage('explore')" class="hover:text-[#e4c478] transition-colors">Properties</button>
+                        <button class="hover:text-[#e4c478] transition-colors">About</button>
+                        <button class="hover:text-[#e4c478] transition-colors">Contact</button>
+                    </div>
+                    
+                    <div class="text-[11px] text-[#a19572] text-center md:text-right tracking-wide">
+                        © 2026 Dream Nest Realty. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="success-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#132026]/80 backdrop-blur-sm transition-all duration-300 opacity-0 pointer-events-none">
+    <div id="success-modal-box" class="bg-white dark:bg-brand-bgLight p-8 md:p-10 rounded-3xl shadow-2xl transform scale-90 transition-transform duration-300 text-center border border-gray-200 dark:border-white/10 max-w-sm w-full mx-4">
+        
+        <div class="w-20 h-20 mx-auto rounded-full bg-green-100 dark:bg-green-500/20 flex items-center justify-center text-green-600 dark:text-green-400 mb-6 shadow-inner">
+            <i class="ph-fill ph-check-circle text-5xl"></i>
+        </div>
+        
+        <h3 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">Success!</h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+            Your request has been sent.<br>Our team will contact you shortly.
+        </p>
+    </div>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const loader = document.getElementById('loader');
+            const app = document.getElementById('app');
+            
+            // --- NEW: Check memory for the last page visited ---
+            const savedPage = localStorage.getItem('currentPage') || 'home';
+            switchPage(savedPage, true);
+            
+            setTimeout(() => {
+                loader.classList.add('opacity-0');
+                
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    app.classList.remove('hidden');
+                    
+                    void app.offsetWidth; 
+                    app.classList.remove('opacity-0');
+                    app.classList.add('flex');
+
+                    // --- NEW: Jump to exact scroll position from before refresh ---
+                    const savedScroll = localStorage.getItem('scrollPos');
+                    if (savedScroll) {
+                        window.scrollTo(0, parseInt(savedScroll));
+                    }
+                }, 500);
+                
+            }, 1200); 
+
+            // --- Web3Forms Background Submission Logic ---
+const form = document.getElementById('callback-form');
+const result = document.getElementById('form-result');
+const submitBtn = document.getElementById('submit-btn');
+
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // This stops the page from redirecting
+        
+        // Change button text to show it's working
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Show "Please wait" message
+        result.innerHTML = "Please wait...";
+        result.className = "mt-4 text-center text-sm font-medium text-gray-500 dark:text-gray-400 block";
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    
+                    // SUCCESS: Trigger the centered modal
+                    const modal = document.getElementById('success-modal');
+                    const modalBox = document.getElementById('success-modal-box');
+                    
+                    // Show the dark overlay and scale up the center box
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modal.classList.add('opacity-100');
+                    modalBox.classList.remove('scale-90');
+                    modalBox.classList.add('scale-100');
+
+                    // Hide it exactly after 2 seconds (2000ms)
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-100');
+                        modal.classList.add('opacity-0', 'pointer-events-none');
+                        modalBox.classList.remove('scale-100');
+                        modalBox.classList.add('scale-90');
+                    }, 2000);
+                    
+                } else {
+                    // API Error fallback
+                    result.innerHTML = json.message || "Something went wrong!";
+                    result.className = "mt-4 text-center text-sm font-bold text-red-600 dark:text-red-400 block";
+                }
+            })
+            // ... (keep the rest of your catch and then blocks the same)
+            .catch(error => {
+                // Network error (Fallback to inline text)
+                result.innerHTML = "Something went wrong. Please check your connection.";
+                result.className = "mt-4 text-center text-sm font-bold text-red-600 dark:text-red-400 block";
+            })
+            .then(function() {
+                // Reset the form and button
+                form.reset();
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                
+                // If an error message was shown, hide it after 5 seconds
+                setTimeout(() => {
+                    if(result) {
+                        result.classList.add('hidden');
+                        result.classList.remove('block');
+                    }
+                }, 5000);
+            });
+    });
+}
+
+// --- Web3Forms Background Submission Logic (Sell Property Form) ---
+const sellForm = document.getElementById('sell-form');
+const sellResult = document.getElementById('sell-form-result');
+const sellSubmitBtn = document.getElementById('sell-submit-btn');
+
+if (sellForm) {
+    sellForm.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+        
+        // Change button text to show it's working
+        const originalBtnText = sellSubmitBtn.innerHTML;
+        sellSubmitBtn.innerHTML = 'Submitting...';
+        sellSubmitBtn.disabled = true;
+
+        // Convert data to JSON
+        const formData = new FormData(sellForm);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let jsonResponse = await response.json();
+                if (response.status == 200) {
+                    
+                    // THIS TRIGGERS THE SAME POP-UP
+                    const modal = document.getElementById('success-modal');
+                    const modalBox = document.getElementById('success-modal-box');
+                    
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modal.classList.add('opacity-100');
+                    modalBox.classList.remove('scale-90');
+                    modalBox.classList.add('scale-100');
+
+                    // Hides it after 2 seconds
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-100');
+                        modal.classList.add('opacity-0', 'pointer-events-none');
+                        modalBox.classList.remove('scale-100');
+                        modalBox.classList.add('scale-90');
+                    }, 2000);
+                    
+                } else {
+                    // API Error fallback
+                    sellResult.innerHTML = jsonResponse.message || "Something went wrong!";
+                    sellResult.className = "mt-4 text-center text-sm font-bold text-red-600 dark:text-red-400 block";
+                }
+            })
+            .catch(error => {
+                // Network error fallback
+                sellResult.innerHTML = "Something went wrong. Please check your connection.";
+                sellResult.className = "mt-4 text-center text-sm font-bold text-red-600 dark:text-red-400 block";
+            })
+            .then(function() {
+                // Reset the form and button
+                sellForm.reset();
+                sellSubmitBtn.innerHTML = originalBtnText;
+                sellSubmitBtn.disabled = false;
+                
+                setTimeout(() => {
+                    if(sellResult) {
+                        sellResult.classList.add('hidden');
+                        sellResult.classList.remove('block');
+                    }
+                }, 5000);
+            });
+    });
+}
+
+            const navbar = document.getElementById('main-nav');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.remove('bg-[#1E3946]', 'border-white/5');
+                    navbar.classList.add('bg-white/30', 'backdrop-blur-md', 'border-white/20');
+                } else {
+                    navbar.classList.add('bg-[#1E3946]', 'border-white/5');
+                    navbar.classList.remove('bg-white/30', 'backdrop-blur-md', 'border-white/20');
+                }
+                
+                // --- NEW: Constantly save the current scroll position ---
+                localStorage.setItem('scrollPos', window.scrollY);
+            });
+            
+            // ... (Keep your existing themeToggleBtn code exactly as it is here) ...
+            
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            const moonIcon = themeToggleBtn.querySelector('.ph-moon');
+            const sunIcon = themeToggleBtn.querySelector('.ph-sun');
+
+            if (localStorage.getItem('color-theme') === 'light' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                htmlElement.classList.remove('dark');
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            } else {
+                htmlElement.classList.add('dark');
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            }
+
+            themeToggleBtn.addEventListener('click', function() {
+                moonIcon.classList.toggle('hidden');
+                sunIcon.classList.toggle('hidden');
+
+                if (localStorage.getItem('color-theme')) {
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        htmlElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    } else {
+                        htmlElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    }
+                } else {
+                    if (htmlElement.classList.contains('dark')) {
+                        htmlElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    } else {
+                        htmlElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    }
+                }
+            });
+        });
+        function changeImage(btn, direction, event) {
+            // Stop the click from opening the property details page
+            event.stopPropagation(); 
+
+            // Find the elements inside this specific card
+            const card = btn.closest('.group\\/image');
+            const img = card.querySelector('.carousel-img');
+            const dots = card.querySelectorAll('.carousel-dots div');
+
+            // Get the image list and current index
+            const images = JSON.parse(img.getAttribute('data-images'));
+            let currentIndex = parseInt(img.getAttribute('data-index'));
+
+            // Calculate the next image index (looping back around)
+            if (direction === 'next') {
+                currentIndex = (currentIndex + 1) % images.length;
+            } else {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+            }
+
+            // Update the image
+            img.src = images[currentIndex];
+            img.setAttribute('data-index', currentIndex);
+
+            // Update the dots to show which image is active
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.replace('bg-white/60', 'bg-[#DDAF3C]');
+                } else {
+                    dot.classList.replace('bg-[#DDAF3C]', 'bg-white/60');
+                }
+            });
+        }
+
+        // Testimonials Data Array
+        const testimonials = [
+            {
+                text: "\"Dream Nest Realty made our home-buying journey incredibly smooth. Their knowledge of Dehradun's market is unmatched. Highly recommended!\"",
+                name: "Ankit Rawat",
+                role: "Homeowner"
+            },
+            {
+                text: "\"The team understood exactly what we were looking for in a farmhouse plot. Transparent, professional, and very helpful throughout the process.\"",
+                name: "Priya Sharma",
+                role: "Property Investor"
+            },
+            {
+                text: "\"I sold my flat through them and got a great deal within weeks. They handled all the paperwork seamlessly. Best real estate agency in town.\"",
+                name: "Rajesh Khanna",
+                role: "Seller"
+            }
+        ];
+
+        let currentTestimonial = 0;
+
+        function changeTestimonial(direction) {
+            const contentDiv = document.getElementById('testimonial-content');
+            const dots = document.getElementById('testimonial-dots').children;
+            
+            // 1. Fade text out
+            contentDiv.style.opacity = '0';
+            
+            // 2. Wait for fade out, then swap text and fade back in
+            setTimeout(() => {
+                // Update Index
+                if (direction === 'next') {
+                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                } else {
+                    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                }
+                
+                // Swap Text
+                document.getElementById('testimonial-text').innerText = testimonials[currentTestimonial].text;
+                document.getElementById('testimonial-name').innerText = testimonials[currentTestimonial].name;
+                document.getElementById('testimonial-role').innerText = testimonials[currentTestimonial].role;
+                
+                // Update Indicator Dots
+                for (let i = 0; i < dots.length; i++) {
+                    if (i === currentTestimonial) {
+                        dots[i].className = "w-8 h-2 rounded-full bg-brand-gold transition-all duration-300";
+                    } else {
+                        dots[i].className = "w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300";
+                    }
+                }
+                
+                // 3. Fade text back in
+                contentDiv.style.opacity = '1';
+                
+            }, 300); // 300ms matches the Tailwind duration-300 class
+        }
+
+        function switchPage(pageId, isInitialLoad = false) {
+            // Save the current page to the browser's memory
+            localStorage.setItem('currentPage', pageId);
+
+            // 1. Hide all views
+            const views = document.querySelectorAll('.view-section');
+            views.forEach(view => {
+                view.classList.add('hidden');
+                view.classList.remove('block');
+            });
+
+            // 2. Show target view
+            const targetView = document.getElementById('view-' + pageId);
+            if(targetView) {
+                targetView.classList.remove('hidden');
+                targetView.classList.add('block');
+            }
+
+            // 3. Update Navbar Colors
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                if(btn.dataset.target === pageId) {
+                    btn.style.color = '#DDAF3C'; 
+                    btn.classList.add('font-bold');
+                } else if(btn.dataset.target) {
+                    btn.style.color = '#a19572';
+                    btn.classList.remove('font-bold');
+                }
+            });
+
+            // 4. Scroll to top ONLY if clicking a button (not on page refresh)
+            if (!isInitialLoad) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        // --- Detail Page Image Gallery Logic ---
+        const detailImages = [
+            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1600566753086-00f18efc204b?auto=format&fit=crop&w=1200&q=80"
+        ];
+        
+        let currentDetailIndex = 0;
+
+        function changeDetailImage(action) {
+            // Determine the new image index
+            if (action === 'prev') {
+                currentDetailIndex = (currentDetailIndex - 1 + detailImages.length) % detailImages.length;
+            } else if (action === 'next') {
+                currentDetailIndex = (currentDetailIndex + 1) % detailImages.length;
+            } else if (typeof action === 'number') {
+                currentDetailIndex = action; // Direct thumbnail click
+            }
+
+            // 1. Update the main big image
+            document.getElementById('detail-main-img').src = detailImages[currentDetailIndex];
+
+            // 2. Update the thumbnail styles (highlight active, fade others)
+            const thumbs = document.querySelectorAll('.detail-thumb');
+            thumbs.forEach((thumb, index) => {
+                if (index === currentDetailIndex) {
+                    // Active thumbnail
+                    thumb.classList.add('border-brand-gold');
+                    thumb.classList.remove('border-transparent', 'opacity-50');
+                } else {
+                    // Inactive thumbnails
+                    thumb.classList.remove('border-brand-gold');
+                    thumb.classList.add('border-transparent', 'opacity-50');
+                }
+            });
+        }
+        
+        // --- Property Filter Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const budgetInput = document.getElementById('filter-budget');
+            const budgetLabel = document.getElementById('budget-label');
+            const areaInput = document.getElementById('filter-area');
+            const areaLabel = document.getElementById('area-label');
+            const locationSelect = document.getElementById('filter-location');
+            const typeBtns = document.querySelectorAll('.filter-type-btn');
+            const statusBtns = document.querySelectorAll('.filter-status-btn');
+            const clearBtn = document.getElementById('clear-filters-btn');
+            
+            // Note: Scoped strictly to '#view-explore' so it doesn't accidentally grab and hide items from the Rent view
+            const cards = document.querySelectorAll('#view-explore .property-card'); 
+            const resultCount = document.getElementById('explore-result-count');
+
+            // Default Filter State
+            let currentFilters = {
+                budget: 400, // 400 Lacs = 4.0 Cr
+                area: 10000,
+                location: 'All Locations',
+                type: null,
+                status: null
+            };
+
+            // Helper: Format Budget Text
+            const formatBudget = (val) => {
+                if (val >= 100) {
+                    return `₹${(val / 100).toFixed(2)} Cr`;
+                }
+                return `₹${val} Lacs`;
+            };
+
+            // Event Listeners for Sliders & Dropdown
+            budgetInput.addEventListener('input', (e) => {
+                currentFilters.budget = parseInt(e.target.value);
+                budgetLabel.textContent = `Budget: ₹0 - ${formatBudget(currentFilters.budget)}`;
+                applyFilters();
+            });
+
+            areaInput.addEventListener('input', (e) => {
+                currentFilters.area = parseInt(e.target.value);
+                areaLabel.textContent = `Area: 0 - ${currentFilters.area} sq.ft`;
+                applyFilters();
+            });
+
+            locationSelect.addEventListener('change', (e) => {
+                currentFilters.location = e.target.value;
+                applyFilters();
+            });
+
+            // Event Listeners for Buttons (Type & Status)
+            const setupToggleButtons = (btns, filterKey) => {
+                btns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // If clicking an already active button, deselect it
+                        if (currentFilters[filterKey] === btn.dataset.value) {
+                            currentFilters[filterKey] = null;
+                            btn.classList.remove('border-brand-gold', 'text-brand-gold');
+                            btn.classList.add('border-gray-200', 'text-gray-500', 'dark:border-gray-600', 'dark:text-gray-300');
+                        } else {
+                            // Deselect all others, then select this one
+                            btns.forEach(b => {
+                                b.classList.remove('border-brand-gold', 'text-brand-gold');
+                                b.classList.add('border-gray-200', 'text-gray-500', 'dark:border-gray-600', 'dark:text-gray-300');
+                            });
+                            currentFilters[filterKey] = btn.dataset.value;
+                            btn.classList.remove('border-gray-200', 'text-gray-500', 'dark:border-gray-600', 'dark:text-gray-300');
+                            btn.classList.add('border-brand-gold', 'text-brand-gold');
+                        }
+                        applyFilters();
+                    });
+                });
+            };
+
+            setupToggleButtons(typeBtns, 'type');
+            setupToggleButtons(statusBtns, 'status');
+
+            // Event Listener for Clear All Button
+            clearBtn.addEventListener('click', () => {
+                currentFilters = { budget: 400, area: 10000, location: 'All Locations', type: null, status: null };
+                
+                budgetInput.value = 400;
+                budgetLabel.textContent = `Budget: ₹0 - ₹4.00 Cr`;
+                
+                areaInput.value = 10000;
+                areaLabel.textContent = `Area: 0 - 10000 sq.ft`;
+                
+                locationSelect.value = 'All Locations';
+                
+                const resetBtns = (btns) => {
+                    btns.forEach(b => {
+                        b.classList.remove('border-brand-gold', 'text-brand-gold');
+                        b.classList.add('border-gray-200', 'text-gray-500', 'dark:border-gray-600', 'dark:text-gray-300');
+                    });
+                };
+                resetBtns(typeBtns);
+                resetBtns(statusBtns);
+
+                applyFilters();
+            });
+
+            // Core Filtering Logic
+            function applyFilters() {
+                let visibleCount = 0;
+                
+                cards.forEach(card => {
+                    const price = parseInt(card.dataset.price);
+                    const area = parseInt(card.dataset.area);
+                    const location = card.dataset.location;
+                    const type = card.dataset.type;
+                    const status = card.dataset.status;
+
+                    let show = true;
+
+                    // Check conditions
+                    if (price > currentFilters.budget) show = false;
+                    if (area > currentFilters.area) show = false;
+                    if (currentFilters.location !== 'All Locations' && location !== currentFilters.location) show = false;
+                    if (currentFilters.type && type !== currentFilters.type) show = false;
+                    if (currentFilters.status && status !== currentFilters.status) show = false;
+
+                    // Toggle Visibility
+                    if (show) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Update Text
+                if(resultCount) {
+                    resultCount.textContent = `${visibleCount} propert${visibleCount === 1 ? 'y' : 'ies'} found in Dehradun`;
+                }
+            }
+
+            // Initialize display on load
+            applyFilters();
+        });
+    </script>
+</body>
+</html>
